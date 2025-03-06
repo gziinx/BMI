@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.bmi
 
 import android.os.Bundle
+import android.service.autofill.UserData
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -12,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.senai.sp.jandira.bmi.screens.HomeScreen
+import br.senai.sp.jandira.bmi.screens.UserDataa
 import br.senai.sp.jandira.bmi.ui.theme.BMITheme
 
 class MainActivity : ComponentActivity() {
@@ -21,6 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             BMITheme {
                 HomeScreen()
+                UserDataa()
             }
             }
         }
