@@ -4,4 +4,6 @@
     <string name="welcome">Welcome!</string>
     <string name="your_name">What\'s your name</string>
     <string name="next">Next</string>
+    <string name="hi" translatable="false">Hi !</string>
+    <string name="cal" translatable="false">Calculate</string>
 </resources>
