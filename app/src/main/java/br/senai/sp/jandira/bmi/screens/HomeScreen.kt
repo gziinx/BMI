@@ -166,5 +166,5 @@ fun HomeScreen(navegacao: NavHostController) {
 @Preview(showSystemUi = true)
 @Composable
 private fun HomeScreenPreview() {
-    //HomeScreen(navegacao)
+    //HomeScreen()
 }

@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.bmi.screens.HomeScreen
-import br.senai.sp.jandira.bmi.screens.UserDataa
+import br.senai.sp.jandira.bmi.screens.UserDataScreen
 import br.senai.sp.jandira.bmi.ui.theme.BMITheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     startDestination = "home"
                 ){
                     composable(route = "home"){ HomeScreen(navegacao)}
-                    composable(route = "dados"){ UserDataa() }
+                    composable(route = "dados"){ UserDataScreen() }
                 }
             }
             }
