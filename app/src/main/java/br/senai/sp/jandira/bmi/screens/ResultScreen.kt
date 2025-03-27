@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,6 +27,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
@@ -39,6 +41,17 @@ import br.senai.sp.jandira.bmi.R
 
 @Composable
 fun ResultScreen(){
+    val context = LocalContext.current
+    val userFile = context
+        .getSharedPreferences("userFile", Context.MODE_PRIVATE)
+
+    val userAge = userFile.getInt("user_age", 0)
+    val userWei = userFile.getInt("user_wei", 0)
+    val userHei = userFile.getFloat("user_hei", 0.0f)
+
+
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -147,7 +160,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.age_value),
+                                    text = stringResource(R.string.age_value) + ", $userAge!",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
@@ -167,7 +180,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.weight_value),
+                                    text = stringResource(R.string.weight_value)+ ", $userWei!",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
@@ -187,7 +200,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.height_value),
+                                    text = stringResource(R.string.height_value)+ ", $userHei!",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
@@ -207,10 +220,10 @@ fun ResultScreen(){
                     Button(
                         onClick = {},
                         modifier = Modifier
-                            .padding(horizontal = 16.dp)
+                            .padding(horizontal = 16.dp, vertical = 10.dp)
                             .height(50.dp),
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = Color(color = 0xFF08948c)
+                            containerColor = Color(color = 0xFF000000)
                         )
                     ) {
                         Text(

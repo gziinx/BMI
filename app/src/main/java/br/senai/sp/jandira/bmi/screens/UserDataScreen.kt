@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -37,27 +38,39 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun UserDataScreen(modifier: Modifier = Modifier) {
+fun UserDataScreen(navegador: NavHostController, modifier: Modifier) {
 
     var ageState = remember {
-        mutableStateOf("Age")
+        mutableStateOf("")
     }
     var weiState = remember {
-        mutableStateOf("Weight")
+        mutableStateOf("")
     }
     var heiState = remember {
-        mutableStateOf("Height")
+        mutableStateOf("")
     }
+
+    val context = LocalContext.current
+    val userFile = context
+        .getSharedPreferences("userFile", Context.MODE_PRIVATE)
+
+    val userName = userFile.getString("user_name", "User name not found!")
+
+    val editor = userFile.edit()
+
 
 
 
@@ -84,7 +97,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
             Text(
                 text = stringResource(
                     R.string.hi
-                ),
+                ) + ", $userName!",
                 modifier = modifier
                     .padding(top = 70.dp)
                     .padding(horizontal = 15.dp),
@@ -116,8 +129,8 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                 ){
                     Row (
                         modifier = modifier
-                            .fillMaxWidth()
-                            .padding(start = 13.dp)
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
 
                     ){
                         Column {
@@ -205,7 +218,7 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
 
                             Button(
                                 onClick = {},
-                                colors = ButtonDefaults.buttonColors(Color(0xFF3F2621)),
+                                colors = ButtonDefaults.buttonColors(Color(0xFF000000)),
                                 modifier = Modifier
                                     .padding(horizontal = 45.dp)
                                     .width(100.dp)
@@ -236,7 +249,8 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 .padding(bottom = 18.dp),
                             shape = RoundedCornerShape(20.dp),
                             keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Number
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Next
 
                             ),
                             label = {
@@ -266,7 +280,8 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 .padding(bottom = 18.dp),
                             shape = RoundedCornerShape(20.dp),
                             keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Number
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Next
 
                             ),
                             label = {
@@ -294,7 +309,8 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                                 .width(320.dp),
                             shape = RoundedCornerShape(20.dp),
                             keyboardOptions = KeyboardOptions(
-                                keyboardType = KeyboardType.Number
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Done
 
                             ),
                             label = {
@@ -314,7 +330,13 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
                             }
                         )
                         Button(
-                            onClick = {},
+                            onClick = {
+                                editor.putInt("user_age", ageState.value.toInt())
+                                editor.putInt("user_wei", weiState.value.toInt())
+                                editor.putFloat("user_hei", heiState.value.toFloat())
+                                editor.apply()
+                                navegador.navigate("bore")
+                            },
                             colors = ButtonDefaults.buttonColors(Color(0xFF3F2621)),
                             modifier = modifier
                                 .padding(top = 50.dp)
@@ -348,5 +370,5 @@ fun UserDataScreen(modifier: Modifier = Modifier) {
 @Preview(showSystemUi = true)
 @Composable
 private fun UserDataScreenPreview(){
-    UserDataScreen()
+    //UserDataScreen()
 }

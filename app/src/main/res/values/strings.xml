@@ -4,7 +4,7 @@
     <string name="welcome">Welcome!</string>
     <string name="your_name">What\'s your name</string>
     <string name="next">Next</string>
-    <string name="hi" translatable="false">Hi !</string>
+    <string name="hi" translatable="false">Hi</string>
     <string name="male" translatable="false">Male</string>
     <string name="female" translatable="false">Female</string>
     <string name="calculate" translatable="false">Calculate</string>
@@ -15,7 +15,8 @@
     <string name="bmi_value" translatable="false">30,6</string>
     <string name="class_bmi" translatable="false">You have Class I Obesity</string>
     <string name="new_calculate" translatable="false">New Calc</string>
-    <string name="age_value" translatable="false">50</string>
+    <string name="age_value" translatable="false">50</string>v
     <string name="weight_value" translatable="false">97 kg</string>
     <string name="height_value" translatable="false">178 cm</string>
+    <string name="erro" translatable="false">O nome é obrigatório</string>
 </resources>

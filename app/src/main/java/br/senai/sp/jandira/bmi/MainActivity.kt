@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import br.senai.sp.jandira.bmi.screens.HomeScreen
+import br.senai.sp.jandira.bmi.screens.ResultScreen
 import br.senai.sp.jandira.bmi.screens.UserDataScreen
 import br.senai.sp.jandira.bmi.ui.theme.BMITheme
 
@@ -21,9 +23,12 @@ class MainActivity : ComponentActivity() {
                 NavHost(
                     navController = navegacao,
                     startDestination = "home"
+
                 ){
                     composable(route = "home"){ HomeScreen(navegacao)}
-                    composable(route = "dados"){ UserDataScreen() }
+                    composable(route = "dados"){ UserDataScreen(navegacao, modifier = Modifier)}
+                    composable(route = "bore"){ ResultScreen()}
+
                 }
             }
             }
