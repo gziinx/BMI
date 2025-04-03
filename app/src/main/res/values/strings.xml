@@ -15,8 +15,11 @@
     <string name="bmi_value" translatable="false">30,6</string>
     <string name="class_bmi" translatable="false">You have Class I Obesity</string>
     <string name="new_calculate" translatable="false">New Calc</string>
-    <string name="age_value" translatable="false">50</string>v
-    <string name="weight_value" translatable="false">97 kg</string>
-    <string name="height_value" translatable="false">178 cm</string>
     <string name="erro" translatable="false">O nome é obrigatório</string>
+    <string name="obesity_1" translatable="false">You have class I obesity!</string>
+    <string name="obesity_2" translatable="false">You have class II obesity!</string>
+    <string name="obesity_3" translatable="false">You have class III obesity!</string>
+    <string name="normal" translatable="false">You have normal body weight!</string>
+    <string name="under_weight" translatable="false">You are bellow your ideal weight!</string>
+    <string name="over_weight" translatable="false">You are slightly overweight!</string>
 </resources>

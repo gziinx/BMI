@@ -96,8 +96,7 @@ fun UserDataScreen(navegador: NavHostController, modifier: Modifier) {
         ){
             Text(
                 text = stringResource(
-                    R.string.hi
-                ) + ", $userName!",
+                    R.string.hi) + ", $userName!",
                 modifier = modifier
                     .padding(top = 70.dp)
                     .padding(horizontal = 15.dp),

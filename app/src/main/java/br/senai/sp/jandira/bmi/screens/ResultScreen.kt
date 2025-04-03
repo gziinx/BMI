@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.bmi.R
+import java.util.Locale
 
 
 @Composable
@@ -160,7 +161,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.age_value) + ", $userAge!",
+                                    text ="$userAge",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
@@ -180,7 +181,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.weight_value)+ ", $userWei!",
+                                    text = " $userWei Kg",
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
@@ -200,7 +201,7 @@ fun ResultScreen(){
                                     fontSize = 20.sp
                                 )
                                 Text(
-                                    text = stringResource(R.string.height_value)+ ", $userHei!",
+                                    text = String.format(Locale.getDefault(), "%.2f", userHei),
                                     color = Color.Black,
                                     fontWeight = FontWeight.Bold,
                                     fontSize = 20.sp
