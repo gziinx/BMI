@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
@@ -37,6 +38,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.senai.sp.jandira.bmi.R
+import br.senai.sp.jandira.bmi.screens.components.BmiLevel
+import br.senai.sp.jandira.bmi.utils.convertNumberToLocale
+import calcs.bmiCalculate
 import java.util.Locale
 
 
@@ -50,7 +54,7 @@ fun ResultScreen(){
     val userWei = userFile.getInt("user_wei", 0)
     val userHei = userFile.getFloat("user_hei", 0.0f)
 
-
+    val bmi = bmiCalculate(userWei, userHei.toDouble().div(100))
 
 
     Box(
@@ -106,9 +110,9 @@ fun ResultScreen(){
                         modifier = Modifier
                             .size(100.dp),
                         shape = CircleShape,
-                        border = BorderStroke(5.dp, Color(color = 0xFFEF9106)),
+                        border = BorderStroke(5.dp, color = bmi.bmiColor),
                         colors = CardDefaults.cardColors(
-                            containerColor = Color.White
+                            containerColor = Color.Transparent
                         )
                     )   {
                         Column (
@@ -118,7 +122,11 @@ fun ResultScreen(){
                             verticalArrangement = Arrangement.Center
                         )   {
                             Text(
-                                text = stringResource(R.string.bmi_value),
+                                text = String.format(
+                                    Locale.getDefault(),
+                                    "%.1f",
+                                    bmi.bmi.second
+                                ),
                                 color = Color.Black,
                                 fontWeight = FontWeight.Bold,
                                 fontSize = 35.sp
@@ -131,7 +139,7 @@ fun ResultScreen(){
                         horizontalAlignment = Alignment.CenterHorizontally
                     ){
                         Text(
-                            text = stringResource(R.string.class_bmi),
+                            text = bmi.bmi.first,
                             color = Color.Black,
                             fontWeight = FontWeight.Bold,
                             fontSize = 20.sp
@@ -209,13 +217,43 @@ fun ResultScreen(){
                             }
                         }
                     }
-                    Box(
+                    Column (
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(300.dp)
+
                             .background(Color.LightGray)
                     ){
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.ligth_blue),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
+                        )
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.ligth_green),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
+                        )
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.yellow),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
 
+                        )
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.ligth_orange),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
+                        )
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.dark_orange),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
+                        )
+                        BmiLevel(
+                            bulletColor = colorResource(R.color.red),
+                            LeftText = stringResource(R.string.underwight),
+                            RigthText = "<${convertNumberToLocale(18.5)}"
+                        )
                     }
                     HorizontalDivider()
                     Button(

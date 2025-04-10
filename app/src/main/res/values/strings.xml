@@ -22,4 +22,6 @@
     <string name="normal" translatable="false">You have normal body weight!</string>
     <string name="under_weight" translatable="false">You are bellow your ideal weight!</string>
     <string name="over_weight" translatable="false">You are slightly overweight!</string>
+    <string name="underwight" translatable="false">underwight</string>
+
 </resources>
